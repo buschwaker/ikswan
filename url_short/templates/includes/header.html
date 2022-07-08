@@ -1,0 +1,28 @@
+{% load static %}
+{% with request.resolver_match.view_name as view_name %}
+  <nav class="navbar navbar-light" style="background-color: lightskyblue">
+    <div class="container">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link {% if view_name  == 'service:main_page' %}active{% endif %}" href="{% url 'service:main_page' %}">Главная страница</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view_name  == 'service:urls_list' %}active{% endif %}" href="{% url 'service:urls_list' %}">Cписок ссылок</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if view_name  == 'users:signup' %}active{% endif %}" href="{% url 'users:signup' %}">Зарегистрировать пользователя</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link link-light" href="{% url 'users:logout' %}">Выйти</a>
+        </li>
+        <li>
+          <p class="nav-link link-light">Пользователь: {{request.user.username}}</p>
+        <li>
+
+        {% endif %}
+
+      </ul>
+    </div>
+  </nav>
+{% endwith %}

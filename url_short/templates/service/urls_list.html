@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% block title %}Список ваших ссылок{% endblock %}
+{% block content %}
+<div class="container py-2">
+    <div class="row g-2">
+        <div>
+            <table class="table table-bordered">
+                <caption>Список ваших ссылок</caption>
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Полная ссылка</th>
+                        <th scope="col">Сокращенная ссылка</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for url in url_list %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ url.full_url }}</td>
+                        <td>{{ url.short_url }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
