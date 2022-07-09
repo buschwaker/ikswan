@@ -26,3 +26,18 @@
 <br><br>
 Логин/Пароль администратора<br> логин: `admin`, пароль: `admin`<br>
 Логин/Пароль пользователя без административных прав<br> логин: `erick`, пароль: `Akroshko_1995`
+## Шаблон наполнения env-файла:
+`.env` файл должен находиться в той же директории, что и файл `docker-compose.yaml`<br>
+Заполнить его следует следующими данными:
+- **DB_ENGINE**
+- **DB_NAME**
+- **POSTGRES_USER**
+- **POSTGRES_PASSWORD**
+- **DB_HOST**
+- **DB_PORT**
+
+## Команды для запуска приложения в контейнерах
+1. `docker-compose up -d --build`
+1. `docker-compose exec web python manage.py migrate`
+2. `docker-compose exec web python manage.py createsuperuser`
+3. `docker-compose exec web python manage.py collectstatic --no-input`
